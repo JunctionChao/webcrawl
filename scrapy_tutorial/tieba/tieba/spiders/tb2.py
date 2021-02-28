@@ -3,12 +3,14 @@ from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 
 # 用下载中间件处理response，并且结合CrawlSpider的方式
+# CrawlSpider会根据我们制定的规则提取url，并制定callback函数
 
 class Tb2Spider(CrawlSpider):
     name = 'tb2'
     allowed_domains = ['tieba.baidu.com']
     start_urls = ['https://tieba.baidu.com/f?kw=%E5%91%A8%E6%9D%B0%E4%BC%A6&ie=utf-8&tab=good']
 
+    # follow 当前url地址的响应是否继续通过rules来提取url地址
     rules = (
         Rule(LinkExtractor(allow=r'/p/\d+'), callback='post_bar_detail'), # 帖子链接
         Rule(LinkExtractor(allow=r'/f\?kw=%E5%91%A8%E6%9D%B0%E4%BC%A6&ie=utf-8&tab=good&cid=&pn=\d+'), follow=True), # 帖子翻页链接
