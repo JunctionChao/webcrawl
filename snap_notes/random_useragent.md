@@ -2,6 +2,8 @@
 
 [random-user-agent · PyPI](https://pypi.org/project/random-user-agent/)
 
+[random-user-agent github](https://github.com/Luqman-Ud-Din/random_user_agent)
+
 ```python
 from random_user_agent.user_agent import UserAgent
 from random_user_agent.params import SoftwareName, OperatingSystem
